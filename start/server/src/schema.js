@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server';
+const { gql } = require('apollo-server');
 
 /**
  * GraphQL cheatsheet:
@@ -54,9 +54,9 @@ const typeDefs = gql`
   }
 
   type TripUpdateResponse {
-      success: Boolean!
-      message: String
-      launches: [Launch]
+    success: Boolean!
+    message: String
+    launches: [Launch]
   }
 
   enum PatchSize {
