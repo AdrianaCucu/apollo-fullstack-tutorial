@@ -1,4 +1,4 @@
-### Built to familiarise myself with Apollo and GraphQL in the context of a React application by following the tutorial at [www.apollographql.com](https://www.apollographql.com/docs/tutorial/introduction) 🚀
+### Built to familiarise myself with Apollo and GraphQL by following the tutorial at [www.apollographql.com](https://www.apollographql.com/docs/tutorial/introduction) 🚀
 
 #
 
