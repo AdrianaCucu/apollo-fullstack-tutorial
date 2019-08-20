@@ -1,5 +1,14 @@
 import { gql } from 'apollo-server';
 
-const typeDefs = gql``;
+const typeDefs = gql`
+  type Query {
+    # Queries for the launches
+    launches: [Launch]!
+    launch(id: ID!): Launch
+
+    # Queries for the current user
+    me: User
+  }
+`;
 
 module.exports = typeDefs;
