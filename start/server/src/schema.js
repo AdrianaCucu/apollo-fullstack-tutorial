@@ -9,7 +9,11 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
   type Query {
     # Queries for the launches
-    launches: [Launch]!
+    launches(
+      pageSize: Int
+      after: String
+    ): LaunchConnection!
+    
     launch(id: ID!): Launch
 
     # Queries for the current user
@@ -26,6 +30,13 @@ const typeDefs = gql`
 
     # login token
     login(email: String): String
+  }
+
+  # Returns a list of launches, a cursor (tracks where we are in the list), and whether there is more data to be fetched
+  type LaunchConnection {
+    cursor: String!
+    hasMore: Boolean!
+    launches: [Launch]!
   }
 
   type Launch {
