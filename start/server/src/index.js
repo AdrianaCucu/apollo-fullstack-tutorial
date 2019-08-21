@@ -1,7 +1,23 @@
 const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./schema');
+const { createStore } = require('./utils');
 
-const server = new ApolloServer({ typeDefs });
+const LaunchAPI = require('./datasources/launch');
+const UserAPI = require('./datasources/user');
+
+/**
+ * Creates the DB by calling createStore.
+ */
+const store = createStore();
+
+const server = new ApolloServer({
+  typeDefs,
+  // Connects LaunchAPI and UserAPI to the graph.
+  dataSources: () => ({
+    launchAPI: new LaunchAPI(),
+    userAPI: new UserAPI({ store })
+  })
+});
 
 /**
  * Server opens GraphQL playground by default.
