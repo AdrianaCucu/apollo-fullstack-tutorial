@@ -63,6 +63,9 @@ module.exports = {
       if (user) return Buffer.from(email).toString('base64');
     },
 
+    // Careful!
+    // Partial success possible:
+    // Some launches are booked and some fail
     bookTrips: async (_, { launchIds }, { dataSources }) => {
       const results = await dataSources.userAPI.bookTrips({ launchIds });
       const launches = await dataSources.launchAPI.getLaunchesByIds({
