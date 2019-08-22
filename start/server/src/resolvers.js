@@ -54,5 +54,13 @@ module.exports = {
         }) || []
       );
     }
+  },
+
+  Mutation: {
+    login: async (_, { email }, { dataSources }) => {
+      const user = await dataSources.userAPI.findOrCreateUser({ email });
+      // Returns a token if the user exists.
+      if (user) return Buffer.from(email).toString('base64');
+    }
   }
 };

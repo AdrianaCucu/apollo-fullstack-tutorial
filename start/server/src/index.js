@@ -13,7 +13,7 @@ const UserAPI = require('./datasources/user');
 const store = createStore();
 
 const server = new ApolloServer({
-  // User info.
+  // Checking authorisation headers and attaching the user to the context.
   context: async ({ req }) => {
     const auth = (req.headers && req.headers.authorization) || '';
     const email = Buffer.from(auth, 'base64').toString('ascii');
