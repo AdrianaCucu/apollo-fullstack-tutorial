@@ -4,7 +4,9 @@ import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider } from '@apollo/react-hooks';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import Pages from './pages';
+import { resolvers, typeDefs } from './resolvers';
 
 const cache = new InMemoryCache();
 
@@ -15,7 +17,9 @@ const client = new ApolloClient({
     headers: {
       authorization: localStorage.getItem('token')
     }
-  })
+  }),
+  typeDefs,
+  resolvers
 });
 
 cache.writeData({
