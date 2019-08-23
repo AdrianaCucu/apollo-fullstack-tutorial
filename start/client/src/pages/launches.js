@@ -18,7 +18,7 @@ export const LAUNCH_TILE_DATA = gql`
     }
   }
 `;
-
+  
 const GET_LAUNCHES = gql`
   query launchList($after: String) {
     launches(after: $after) {
